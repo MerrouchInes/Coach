@@ -27,6 +27,7 @@ public class AccessLocal {
     }
 
     /**
+     * --- Méthode ajout
      * Ajout d'un profil dans la table Profil
      * @param profil
      */
@@ -38,5 +39,19 @@ public class AccessLocal {
                     + "," + profil.getAge()
                     + "," + profil.getSexe() + ")"; // Requête d'insertion
         bd.execSQL(req); // Exécution de la requête
+    }
+
+    /**
+     * --- Méthode recupDernier
+     * @return
+     */
+    public void recupDernier() {
+        Profil profil = null ;
+        this.bd = accesBD.getReadableDatabase() ; // Accès en lecture seule sur la BD
+        String req = " (\"" + profil.getDateMesure()
+                + "\"," + profil.getPoids()
+                + "," + profil.getTaille()
+                + "," + profil.getAge()
+                + "," + profil.getSexe() + ")";
     }
 }
