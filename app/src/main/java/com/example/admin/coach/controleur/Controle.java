@@ -26,9 +26,10 @@ public final class Controle { // On rend la classe finale pour empêcher tout h�
      * --- GETTER getInstance()
      * @return une instance de la classe Controle
      */
-    public final static Controle getInstance() {
+    public final static Controle getInstance(Context contexte) {
         if (Controle.instance == null) { // On met == car on fait une comparaison
             Controle.instance = new Controle() ;
+            recupSerialize(contexte); // Au moment du démarrage de l'app, on appelle ce qui a été sérialisé
         }
         return Controle.instance ;
     }
@@ -49,6 +50,7 @@ public final class Controle { // On rend la classe finale pour empêcher tout h�
 
     /**
      * PROCEDURE recupSerialize
+     * Récupère ce qui a été sérialisé
      * @param contexte
      */
     private static void recupSerialize(Context contexte) {
@@ -70,6 +72,58 @@ public final class Controle { // On rend la classe finale pour empêcher tout h�
      */
     public String getMessage(){
         return profil.getMessage() ;
+    }
+
+    /**
+     * --- GETTER getTaille
+     * @return "taille" de la classe Profil
+     */
+    public Integer getTaille() {
+        if (profil == null) {
+        // Si profil null, on ne retourne rien
+            return null;
+        } else {
+            return profil.getTaille() ;
+        }
+    }
+
+    /**
+     * --- GETTER getPoids
+     * @return "poids" de la classe Profil
+     */
+    public Integer getPoids() {
+        if (profil == null) {
+            // Si profil null, on ne retourne rien
+            return null;
+        } else {
+            return profil.getPoids() ;
+        }
+    }
+
+    /**
+     * --- GETTER getAge
+     * @return "age" de la classe Profil
+     */
+    public Integer getAge() {
+        if (profil == null) {
+            // Si profil null, on ne retourne rien
+            return null;
+        } else {
+            return profil.getAge() ;
+        }
+    }
+
+    /**
+     * --- GETTER getSexe
+     * @return "sexe" de la classe Profil
+     */
+    public Integer getSexe() {
+        if (profil == null) {
+            // Si profil null, on ne retourne rien
+            return null;
+        } else {
+            return profil.getSexe() ;
+        }
     }
 
 

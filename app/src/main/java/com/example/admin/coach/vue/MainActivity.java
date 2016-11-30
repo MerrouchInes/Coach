@@ -127,7 +127,7 @@ public class MainActivity extends AppCompatActivity {
         rdHomme = (RadioButton) findViewById(R.id.rdHomme) ;
         lblImg = (TextView) findViewById(R.id.lblImg) ;
         imgSmiley = (ImageView) findViewById(R.id.imgSmiley) ;
-        controle = controle.getInstance(); /* Création du contrôleur. */
+        controle = controle.getInstance(this); /* Création du contrôleur. */
                                            /* Pas de new car constructeur privé et
                                               utilisation d'un singleton */
         this.ecouteCalcul() ; // Appel de la procédure ecouteCalcul
@@ -145,6 +145,21 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main); /* Appel de la méthode setcontentView de la classe-mère */
                                                 /* R -> dossier res */
         init(); // Appel de la procédure init
+
+    }
+
+    /**
+     * --- Procédure recupProfil
+     * Récupère le contenu du profil
+     */
+    private void recupProfil() {
+        if (controle.getTaille() != null) {
+            txtTaille.setText("" + controle.getTaille());
+            txtPoids.setText("" + controle.getPoids()) ;
+            txtAge.setText("" + controle.getAge()) ;
+            rdHomme.setText("" + controle.getSexe()) ;
+            findViewById(R.id.btnCalc).performClick() ;
+        }
 
     }
 
