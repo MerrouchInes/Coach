@@ -2,11 +2,14 @@ package com.example.admin.coach.modele;
 
 import android.util.Log;
 
+import java.io.Serializable;
+
 /**
  * Created by admin on 14/11/2016.
  */
 
-public class Profil {
+public class Profil implements Serializable {
+// L'implémentation de Serializable rend la classe sérialisable
 
     // === Proprietes
 
@@ -60,22 +63,22 @@ public class Profil {
         /* Valorise message en fonction de l'IMG calculé par la fonction */
     private void resultIMG() {
         if (sexe == 0) { // Si la personne est une femme ...
-            if (img <= minFemme) {
+            if (img <= minFemme) { // img inférieur à la moyenne
                 message = "Trop faible";
-            } else if (img <= maxFemme) {
+            } else if (img <= maxFemme) { // img normal
                 message = "Normal";
             } else {
-                message = "Trop élevé";
+                message = "Trop élevé"; // img supérieur à la moyenne
             }
         }
 
         else { // ... sinon, la personne est un homme
-            if (img <= minHomme) {
+            if (img <= minHomme) { // img inférieur à la moyenne
                 message = "Trop faible";
-            } else if (img <= maxHomme) {
+            } else if (img <= maxHomme) { // img normal
                 message = "Normal";
             } else {
-                message = "Trop élevé";
+                message = "Trop élevé"; // img supérieur à la moyenne
             }
         }
     }
@@ -84,7 +87,7 @@ public class Profil {
 
     /**
      * getPoids
-     * @return
+     * @return le poids en kg de la personne
      */
     public int getPoids() {
         return poids;
@@ -92,7 +95,7 @@ public class Profil {
 
     /**
      * getTaille
-     * @return
+     * @return la taille en cm de la personne
      */
     public int getTaille() {
         return taille;
@@ -100,7 +103,7 @@ public class Profil {
 
     /**
      * getAge
-     * @return
+     * @return l'âge de la personne
      */
     public int getAge() {
         return age;
@@ -108,7 +111,7 @@ public class Profil {
 
     /**
      * getSexe
-     * @return
+     * @return le sexe de la personne (0 = F, 1 = M)
      */
     public int getSexe() {
         return sexe;

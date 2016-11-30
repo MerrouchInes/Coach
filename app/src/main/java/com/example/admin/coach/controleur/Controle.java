@@ -1,7 +1,10 @@
 package com.example.admin.coach.controleur;
 
+import android.content.Context;
+
 import com.example.admin.coach.modele.Profil;
 import com.example.admin.coach.vue.MainActivity;
+import com.example.admin.coach.outils.Serializer ;
 
 /**
  * Created by admin on 14/11/2016.
@@ -12,6 +15,7 @@ public final class Controle { // On rend la classe finale pour empêcher tout h�
     // === Proprietes
     private static Controle instance = null;
     private static Profil profil ;
+    private static String nomFic = "saveprofil" ;
 
     // === CONSTRUCTEUR DE LA CLASSE CONTROLE
     private Controle() {
@@ -32,13 +36,23 @@ public final class Controle { // On rend la classe finale pour empêcher tout h�
     /**
      * --- METHODE creerProfil
      * Permet de gerer un profil
-     * @param poids
+     * @param poids en kg
      * @param taille en cm
      * @param age
      * @param sexe 0 pour une femme, 1 pour un homme
+     * @param contexte nécessaire pour la sérialisation
      */
-    public void creerProfil(Integer poids, Integer taille, Integer age, Integer sexe) {
+    public void creerProfil(Integer poids, Integer taille, Integer age, Integer sexe, Context contexte) {
         this.profil = new Profil (poids, taille, age, sexe) ;
+        Serializer.serialize(nomFic, profil, contexte) ;
+    }
+
+    /**
+     * PROCEDURE recupSerialize
+     * @param contexte
+     */
+    private static void recupSerialize(Context contexte) {
+        profil = (Profil)Serializer.deSerialize(nomFic, contexte) ;
     }
 
      /**

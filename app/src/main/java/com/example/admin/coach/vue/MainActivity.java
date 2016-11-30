@@ -71,13 +71,13 @@ public class MainActivity extends AppCompatActivity {
      * --- METHODE afficheResult
      * Affiche une image et modifie le message (couleur+texte) en fct de l'img
      * Formate l'affichage de l'img pour qu'il n'y ait qu'un chiffre après la virgule
-     * @param poids
-     * @param taille
+     * @param poids (kg)
+     * @param taille (cm)
      * @param age
      * @param sexe
      */
     private void afficheResult(Integer poids, Integer taille, Integer age,  Integer sexe) {
-        controle.creerProfil(poids, taille, age, sexe );
+        controle.creerProfil(poids, taille, age, sexe, this ); // this fait référence à contexte
         String message = controle.getMessage() ;
         float img = controle.getImg() ;
 
