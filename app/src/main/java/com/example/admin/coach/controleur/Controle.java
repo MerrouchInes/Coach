@@ -5,6 +5,7 @@ import android.content.Context;
 import com.example.admin.coach.modele.Profil;
 import com.example.admin.coach.vue.MainActivity;
 import com.example.admin.coach.outils.Serializer ;
+import java.util.Date;
 
 /**
  * Created by admin on 14/11/2016.
@@ -29,7 +30,7 @@ public final class Controle { // On rend la classe finale pour empêcher tout h�
     public final static Controle getInstance(Context contexte) {
         if (Controle.instance == null) { // On met == car on fait une comparaison
             Controle.instance = new Controle() ;
-            recupSerialize(contexte); // Au moment du démarrage de l'app, on appelle ce qui a été sérialisé
+            // recupSerialize(contexte); // Au moment du démarrage de l'app, on appelle ce qui a été sérialisé
         }
         return Controle.instance ;
     }
@@ -43,9 +44,9 @@ public final class Controle { // On rend la classe finale pour empêcher tout h�
      * @param sexe 0 pour une femme, 1 pour un homme
      * @param contexte nécessaire pour la sérialisation
      */
-    public void creerProfil(Integer poids, Integer taille, Integer age, Integer sexe, Context contexte) {
-        this.profil = new Profil (poids, taille, age, sexe) ;
-        Serializer.serialize(nomFic, profil, contexte) ;
+    public void creerProfil(Integer poids, Integer taille, Integer age, Integer sexe, Date dateMesure, Context contexte) {
+        this.profil = new Profil (poids, taille, age, sexe, dateMesure) ;
+        // Serializer.serialize(nomFic, profil, contexte) ;
     }
 
     /**
@@ -53,9 +54,10 @@ public final class Controle { // On rend la classe finale pour empêcher tout h�
      * Récupère ce qui a été sérialisé
      * @param contexte
      */
-    private static void recupSerialize(Context contexte) {
+
+    /* private static void recupSerialize(Context contexte) {
         profil = (Profil)Serializer.deSerialize(nomFic, contexte) ;
-    }
+    }*/
 
      /**
      * --- GETTER getImg
@@ -123,6 +125,19 @@ public final class Controle { // On rend la classe finale pour empêcher tout h�
             return null;
         } else {
             return profil.getSexe() ;
+        }
+    }
+
+    /**
+     * --- GETTER getSexe
+     * @return "sexe" de la classe Profil
+     */
+    public Date getDateMesure() {
+        if (profil == null) {
+            // Si profil null, on ne retourne rien
+            return null;
+        } else {
+            return profil.getDateMesure() ;
         }
     }
 

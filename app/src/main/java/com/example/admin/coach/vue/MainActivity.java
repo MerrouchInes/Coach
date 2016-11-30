@@ -131,7 +131,7 @@ public class MainActivity extends AppCompatActivity {
                                            /* Pas de new car constructeur privé et
                                               utilisation d'un singleton */
         this.ecouteCalcul() ; // Appel de la procédure ecouteCalcul
-
+        // this.recupProfil();
     }
 
     @Override // Reperage des methodes abstraites
@@ -145,6 +145,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main); /* Appel de la méthode setcontentView de la classe-mère */
                                                 /* R -> dossier res */
         init(); // Appel de la procédure init
+
 
     }
 

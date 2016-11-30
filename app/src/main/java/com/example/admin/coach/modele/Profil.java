@@ -3,6 +3,7 @@ package com.example.admin.coach.modele;
 import android.util.Log;
 
 import java.io.Serializable;
+import java.util.Date;
 
 /**
  * Created by admin on 14/11/2016.
@@ -26,6 +27,7 @@ public class Profil implements Serializable {
     private Integer sexe; // S = 0 pour une femme, et 1 pour un homme
     private float img;
     private String message;
+    private Date dateMesure ;
 
 
     /**
@@ -35,11 +37,12 @@ public class Profil implements Serializable {
      * @param age
      * @param sexe
      */
-    public Profil(int poids,int taille, int age,int sexe ) {
+    public Profil(Integer poids, Integer taille, Integer age, Integer sexe, Date dateMesure) { //
         this.poids = poids;
         this.taille = taille;
         this.age = age;
         this.sexe = sexe;
+        this.dateMesure = dateMesure ;
 
 
 
@@ -86,39 +89,39 @@ public class Profil implements Serializable {
     // --- GETTERS
 
     /**
-     * getPoids
+     * GETTER getPoids
      * @return le poids en kg de la personne
      */
-    public int getPoids() {
+    public Integer getPoids() {
         return poids;
     }
 
     /**
-     * getTaille
+     * GETTER getTaille
      * @return la taille en cm de la personne
      */
-    public int getTaille() {
+    public Integer getTaille() {
         return taille;
     }
 
     /**
-     * getAge
+     * GETTER getAge
      * @return l'âge de la personne
      */
-    public int getAge() {
+    public Integer getAge() {
         return age;
     }
 
     /**
-     * getSexe
+     * GETTER getSexe
      * @return le sexe de la personne (0 = F, 1 = M)
      */
-    public int getSexe() {
+    public Integer getSexe() {
         return sexe;
     }
 
     /**
-     * getImg
+     * GETTER getImg
      * @return le résultat du calcul de l'img
      */
     public float getImg() {
@@ -126,12 +129,17 @@ public class Profil implements Serializable {
     }
 
     /**
-     * getMessage
+     * GETTER getMessage
      * @return le message correspondant à la valeur de l'img
      */
     public String getMessage() {
         return message;
     }
 
+    /**
+     * GETTER getDateMesure
+     * @return la date à laquelle la mesure a été prise
+     */
+    public Date getDateMesure() { return dateMesure ; }
 
 }
