@@ -77,7 +77,7 @@ public class MainActivity extends AppCompatActivity {
      * @param sexe
      */
     private void afficheResult(Integer poids, Integer taille, Integer age,  Integer sexe) {
-        controle.creerProfil(poids, taille, age, sexe, this ); // this fait référence à contexte
+        controle.creerProfil(poids, taille, age, sexe , MainActivity.this ); // this fait référence à contexte
         String message = controle.getMessage() ;
         float img = controle.getImg() ;
 

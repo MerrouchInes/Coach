@@ -44,8 +44,8 @@ public final class Controle { // On rend la classe finale pour empêcher tout h�
      * @param sexe 0 pour une femme, 1 pour un homme
      * @param contexte nécessaire pour la sérialisation
      */
-    public void creerProfil(Integer poids, Integer taille, Integer age, Integer sexe, Date dateMesure, Context contexte) {
-        this.profil = new Profil (poids, taille, age, sexe, dateMesure) ;
+    public void creerProfil(Integer poids, Integer taille, Integer age, Integer sexe, Context contexte) {
+        this.profil = new Profil (poids, taille, age, sexe, new Date()) ;
         // Serializer.serialize(nomFic, profil, contexte) ;
     }
 
@@ -57,7 +57,7 @@ public final class Controle { // On rend la classe finale pour empêcher tout h�
 
     /* private static void recupSerialize(Context contexte) {
         profil = (Profil)Serializer.deSerialize(nomFic, contexte) ;
-    }*/
+       }*/
 
      /**
      * --- GETTER getImg
