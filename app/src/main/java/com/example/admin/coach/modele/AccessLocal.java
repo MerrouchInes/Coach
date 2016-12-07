@@ -38,7 +38,7 @@ public class AccessLocal {
      */
     public void ajout(Profil profil) {
         this.bd = accesBD.getWritableDatabase() ; // Accès en écriture sur la BD
-        this.req += " (\"" + profil.getDateMesure()
+        this.req = "insert into profil values (\"" + profil.getDateMesure()
                     + "\"," + profil.getPoids()
                     + "," + profil.getTaille()
                     + "," + profil.getAge()

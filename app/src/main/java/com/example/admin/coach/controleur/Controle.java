@@ -2,6 +2,7 @@ package com.example.admin.coach.controleur;
 
 import android.content.Context;
 
+import com.example.admin.coach.modele.AccessLocal;
 import com.example.admin.coach.modele.Profil;
 import com.example.admin.coach.vue.MainActivity;
 import com.example.admin.coach.outils.Serializer ;
@@ -17,6 +18,8 @@ public final class Controle { // On rend la classe finale pour empêcher tout h�
     private static Controle instance = null;
     private static Profil profil ;
     private static String nomFic = "saveprofil" ;
+    private static AccessLocal accessLocal ;
+
 
     // === CONSTRUCTEUR DE LA CLASSE CONTROLE
     private Controle() {
@@ -31,6 +34,8 @@ public final class Controle { // On rend la classe finale pour empêcher tout h�
         if (Controle.instance == null) { // On met == car on fait une comparaison
             Controle.instance = new Controle() ;
             // recupSerialize(contexte); // Au moment du démarrage de l'app, on appelle ce qui a été sérialisé
+            accessLocal = new AccessLocal(contexte);
+            profil = accessLocal.recupDernier();
         }
         return Controle.instance ;
     }
@@ -47,6 +52,7 @@ public final class Controle { // On rend la classe finale pour empêcher tout h�
     public void creerProfil(Integer poids, Integer taille, Integer age, Integer sexe, Context contexte) {
         this.profil = new Profil (poids, taille, age, sexe, new Date()) ;
         // Serializer.serialize(nomFic, profil, contexte) ;
+       accessLocal.ajout(profil); // Permet d'ajouter le nouveau profil dans la base locale
     }
 
     /**

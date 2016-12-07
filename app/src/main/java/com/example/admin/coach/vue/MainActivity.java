@@ -131,7 +131,7 @@ public class MainActivity extends AppCompatActivity {
                                            /* Pas de new car constructeur privé et
                                               utilisation d'un singleton */
         this.ecouteCalcul() ; // Appel de la procédure ecouteCalcul
-        // this.recupProfil();
+        this.recupProfil();
     }
 
     @Override // Reperage des methodes abstraites
@@ -158,7 +158,7 @@ public class MainActivity extends AppCompatActivity {
             txtTaille.setText("" + controle.getTaille());
             txtPoids.setText("" + controle.getPoids()) ;
             txtAge.setText("" + controle.getAge()) ;
-            rdHomme.setText("" + controle.getSexe()) ;
+            //rdHomme.setText("" + controle.getSexe()) ;
             findViewById(R.id.btnCalc).performClick() ;
         }
 
