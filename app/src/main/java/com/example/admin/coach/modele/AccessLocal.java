@@ -3,7 +3,9 @@ package com.example.admin.coach.modele;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.util.Log;
 
+import com.example.admin.coach.outils.MesOutils;
 import com.example.admin.coach.outils.MySQLiteOpenHelper;
 
 import java.text.DateFormat;
@@ -38,12 +40,13 @@ public class AccessLocal {
      */
     public void ajout(Profil profil) {
         this.bd = accesBD.getWritableDatabase() ; // Accès en écriture sur la BD
-        this.req = "insert into profil values (\"" + profil.getDateMesure()
+        this.req = "insert into profil values (\"" + MesOutils.convertDateToString(profil.getDateMesure())
                     + "\"," + profil.getPoids()
                     + "," + profil.getTaille()
                     + "," + profil.getAge()
                     + "," + profil.getSexe() + ")"; // Requête d'insertion
         bd.execSQL(req); // Exécution de la requête
+
     }
 
     /**
@@ -64,7 +67,8 @@ public class AccessLocal {
         // Curseur qui permet d'accéder au résultat de la requête
         Cursor curseur = bd.rawQuery(req, null)  ;
         if(curseur.moveToFirst()) { // S'il y a au moins une ligne dans le curseur, valorisation
-            Date dateMesure = new Date() ;
+            Date dateMesure = MesOutils.convertStringToDate(curseur.getString(0)) ;
+            Log.d("dateMesure :","********************************************************"+dateMesure);
             Integer poids = curseur.getInt(1);
             Integer taille = curseur.getInt(2);
             Integer age = curseur.getInt(3);
@@ -75,4 +79,5 @@ public class AccessLocal {
         curseur.close(); // Fermeture du curseur
         return profil;
     }
+
 }
